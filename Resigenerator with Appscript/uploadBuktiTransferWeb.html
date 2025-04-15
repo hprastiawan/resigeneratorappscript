@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body { font-family: Arial, sans-serif; padding: 10px; }
+      input[type="file"] { margin-top: 10px; }
+      button { margin-top: 15px; }
+    </style>
+  </head>
+  <body>
+    <h3>Upload Bukti Transfer</h3>
+    <div id="info">Memuat data...</div>
+    <input type="file" id="file" accept="image/*,application/pdf">
+    <br>
+    <button onclick="upload()">📤 Upload</button>
+    <div id="status"></div>
+
+    <script>
+  let rowIndex;
+
+  function upload() {
+    const fileInput = document.getElementById("file");
+    const file = fileInput.files[0];
+    if (!file) {
+      alert("Pilih file terlebih dahulu.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const base64Data = e.target.result.split(",")[1]; // buang header
+      google.script.run
+        .withSuccessHandler(msg => {
+          document.getElementById("status").innerHTML = msg;
+          google.script.host.close();
+        })
+        .uploadBase64File(base64Data, file.name, file.type, rowIndex);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Ambil data baris aktif saat sidebar dibuka
+  google.script.run.withSuccessHandler(data => {
+    if (!data) {
+      document.getElementById("info").innerHTML = "❌ Tidak bisa mengambil data.";
+      return;
+    }
+    rowIndex = data.rowIndex;
+    document.getElementById("info").innerHTML = `
+      <b>ID Transaksi:</b> ${data.idTransaksi}<br>
+      <b>Nama:</b> ${data.nama}<br>
+      <b>Program:</b> ${data.program}<br>
+      <b>Status:</b> ${data.status}<br>
+    `;
+  }).getActiveRowData();
+</script>
+
+  </body>
+</html>
