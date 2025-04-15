@@ -1,6 +1,6 @@
 # Resi & Email Automation System 📩
 
-Sistem otomatisasi untuk pembuatan **Resi Pembayaran** dan pengiriman **Email Konfirmasi** peserta program Phincon Academy, dibangun menggunakan **Google Apps Script**.
+Sistem otomatisasi untuk pembuatan **Resi Pembayaran** dan pengiriman **Email Konfirmasi** peserta, dibangun menggunakan **Google Apps Script**.
 
 ---
 
@@ -42,7 +42,7 @@ Sistem otomatisasi untuk pembuatan **Resi Pembayaran** dan pengiriman **Email Ko
 Tersedia dalam spreadsheet:
 
 ```
-🏢 Phincon Academy
+🏢 HOME
 ├── 🔄 Refresh Halaman
 ├── 🆔 Generate ID
 │   └── 🔢 Generate ID Transaksi & Registrasi
@@ -76,16 +76,7 @@ Tersedia dalam spreadsheet:
 
 ## 🚀 Kontribusi
 
-Project ini digunakan secara internal di **Phincon Academy** untuk mengotomasi administrasi pembayaran peserta. Kontribusi terbuka untuk pengembangan lanjutan seperti integrasi WhatsApp API atau dashboard analytics.
-
----
-
-## 📌 Maintainer
-
-Developed & maintained by  
-**Hendra Prastiawan**  
-Head of Phincon Academy  
-📧 hendra.prastiawan@phincon.com
+Project ini digunakan untuk mengotomasi administrasi pembayaran peserta. Kontribusi terbuka untuk pengembangan lanjutan seperti integrasi WhatsApp API atau dashboard analytics.
 
 ---
 
